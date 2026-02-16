@@ -1,0 +1,104 @@
+.services {
+    background: var(--bg-secondary);
+    position: relative;
+}
+
+.services__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+}
+
+.services__card {
+    /* Using glass-card from index.css mostly, adding specific padding/alignment */
+    padding: 32px 24px;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.services__card-bg-glow {
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    filter: blur(60px);
+    opacity: 0.1;
+    transition: opacity var(--transition);
+    z-index: -1;
+}
+
+.services__card:hover .services__card-bg-glow {
+    opacity: 0.3;
+}
+
+.services__icon {
+    width: 60px;
+    height: 60px;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+    transition: transform var(--transition);
+    background: var(--bg-primary);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border-light);
+}
+
+[data-theme="dark"] .services__icon {
+    background: rgba(15, 23, 42, 0.6);
+    border-color: rgba(255, 255, 255, 0.05);
+}
+
+.services__card:hover .services__icon {
+    transform: scale(1.1) rotate(-5deg);
+    box-shadow: var(--shadow-md);
+}
+
+.services__card-title {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--text-primary);
+    transition: color var(--transition);
+}
+
+.services__card:hover .services__card-title {
+    color: var(--primary);
+}
+
+.services__card-desc {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 24px;
+    flex-grow: 1;
+}
+
+.services__card-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: gap var(--transition);
+    align-self: flex-start;
+}
+
+.services__card-link:hover {
+    gap: 10px;
+}
+
+/* Response */
+@media (max-width: 640px) {
+    .services__grid {
+        grid-template-columns: 1fr;
+    }
+}

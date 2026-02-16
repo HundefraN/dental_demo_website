@@ -1,0 +1,212 @@
+.doctors {
+    background: var(--bg-secondary);
+}
+
+.doctors__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+}
+
+.doctors__card {
+    /* Glass card styles from index.css are base, extended here */
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    border-radius: var(--radius-xl);
+}
+
+.doctors__image-wrapper {
+    position: relative;
+    padding: 40px 20px 0;
+    text-align: center;
+    background: var(--bg-primary);
+    border-bottom: 1px solid var(--border-light);
+}
+
+[data-theme="dark"] .doctors__image-wrapper {
+    background: rgba(30, 41, 59, 0.4);
+}
+
+.doctors__bg-pattern {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+
+.doctors__avatar {
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    margin-bottom: -40px;
+    /* Slight overlap with content */
+}
+
+.doctors__avatar-inner {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 3px solid var(--primary);
+    background: var(--bg-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    transition: transform var(--transition-bounce);
+}
+
+.doctors__card:hover .doctors__avatar-inner {
+    transform: scale(1.05) translateY(-5px);
+}
+
+.doctors__avatar-inner svg {
+    width: 80px;
+    height: 80px;
+}
+
+.doctors__rating {
+    position: absolute;
+    bottom: 5px;
+    right: 0;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 6px 12px;
+    border-radius: var(--radius-full);
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    background: #fff;
+    box-shadow: var(--shadow-sm);
+}
+
+[data-theme="dark"] .doctors__rating {
+    background: var(--bg-tertiary);
+}
+
+.doctors__socials {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    opacity: 0;
+    transform: translateX(20px);
+    transition: all var(--transition);
+}
+
+.doctors__card:hover .doctors__socials {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.doctors__social-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+    transition: all var(--transition-fast);
+}
+
+.doctors__social-btn:hover {
+    background: var(--primary);
+    color: #fff;
+}
+
+.doctors__info {
+    padding: 56px 24px 32px;
+    /* Top padding accounts for avatar overlap */
+    text-align: center;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.doctors__name {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: var(--text-primary);
+}
+
+.doctors__role {
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.doctors__specialty {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+}
+
+.doctors__divider {
+    width: 40px;
+    height: 2px;
+    background: var(--border);
+    margin-bottom: 20px;
+}
+
+.doctors__meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: auto;
+    padding-top: 16px;
+}
+
+.doctors__exp {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+}
+
+.doctors__meta-label {
+    font-size: 0.75rem;
+    color: var(--text-tertiary);
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.doctors__meta-value {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.doctors__book-btn {
+    padding: 8px 20px;
+    font-size: 0.85rem;
+}
+
+@media (max-width: 1024px) {
+    .doctors__grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+    }
+}
+
+@media (max-width: 640px) {
+    .doctors__grid {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    .doctors__card {
+        max-width: 100%;
+    }
+}

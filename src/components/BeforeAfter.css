@@ -1,0 +1,168 @@
+.before-after {
+    background: var(--bg-primary);
+}
+
+.ba-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+}
+
+.ba-card {
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    height: 100%;
+    /* Glass card styles */
+    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid var(--border);
+    transition: all var(--transition);
+}
+
+[data-theme="dark"] .ba-card {
+    background: rgba(30, 41, 59, 0.4);
+    border-color: rgba(255, 255, 255, 0.05);
+}
+
+.ba-card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-5px);
+}
+
+.ba-card__viewer {
+    position: relative;
+    height: 300px;
+    cursor: col-resize;
+    user-select: none;
+    overflow: hidden;
+}
+
+.ba-card__image {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.ba-card__image--after {
+    /* Background image is set inline */
+    background-size: cover;
+    z-index: 1;
+}
+
+.ba-card__image--before {
+    /* Background image is set inline */
+    background-size: cover;
+    z-index: 2;
+    border-right: 2px solid #fff;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.ba-card__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    z-index: 2;
+}
+
+.ba-card__emoji {
+    font-size: 4rem;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+}
+
+.ba-card__label {
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    padding: 4px 10px;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border-radius: var(--radius-sm);
+    backdrop-filter: blur(4px);
+}
+
+.ba-card__shine {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, transparent 40%, rgba(255, 255, 255, 0.4) 50%, transparent 60%);
+    z-index: 1;
+    opacity: 0.5;
+}
+
+.ba-card__handle {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 40px;
+    margin-left: -20px;
+    /* Center centered on the line */
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    /* Let clicks pass to container */
+}
+
+.ba-card__line {
+    width: 2px;
+    height: 100%;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.ba-card__circle {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #fff;
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.ba-card__info {
+    padding: 24px;
+}
+
+.ba-card__title {
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: var(--text-primary);
+}
+
+.ba-card__desc {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+}
+
+.ba-card__result {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+@media (max-width: 768px) {
+    .ba-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .ba-card__viewer {
+        height: 250px;
+    }
+}
