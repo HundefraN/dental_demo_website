@@ -8,23 +8,6 @@
     border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-/* Tibeb Pattern Border */
-.footer::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 6px;
-    background: repeating-linear-gradient(45deg,
-            var(--eth-green),
-            var(--eth-green) 10px,
-            var(--eth-gold) 10px,
-            var(--eth-gold) 20px,
-            var(--eth-red) 20px,
-            var(--eth-red) 30px);
-}
-
 [data-theme="dark"] .footer {
     background: #020617;
     /* Slate 950 */
@@ -56,6 +39,12 @@
     width: 36px;
     height: 36px;
     color: var(--primary);
+}
+
+.footer__logo-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 
 .footer__logo-name {

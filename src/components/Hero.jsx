@@ -9,7 +9,6 @@ const Hero = () => {
             <div className="hero__bg">
                 <div className="hero__gradient" />
                 <div className="hero__pattern" />
-                <div className="hero__tibeb-accent" />
                 {/* Animated Orbs */}
                 <motion.div
                     animate={{ x: [0, 50, 0], y: [0, -30, 0] }}

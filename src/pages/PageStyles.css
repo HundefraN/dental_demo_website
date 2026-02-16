@@ -9,17 +9,6 @@
     background: linear-gradient(135deg, var(--navy), rgba(13, 148, 136, 0.06), var(--navy));
 }
 
-.page__hero::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 12px;
-    background: var(--tibeb-pattern);
-    z-index: 10;
-}
-
 .page__title {
     font-size: clamp(2.2rem, 5vw, 3.5rem);
     font-weight: 800;

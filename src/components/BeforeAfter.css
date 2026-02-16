@@ -47,13 +47,15 @@
 
 .ba-card__image--after {
     /* Background image is set inline */
-    background-size: cover;
+    background-size: cover !important;
+    background-position: center !important;
     z-index: 1;
 }
 
 .ba-card__image--before {
     /* Background image is set inline */
-    background-size: cover;
+    background-size: cover !important;
+    background-position: center !important;
     z-index: 2;
     border-right: 2px solid #fff;
     box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);

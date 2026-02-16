@@ -3,6 +3,8 @@ import { ArrowUp, Mail, Phone, MapPin, Instagram, Facebook, Twitter, Linkedin, H
 import { useState } from 'react';
 import './Footer.css';
 
+import logo from '../assets/logo.svg';
+
 const Footer = () => {
     const [email, setEmail] = useState('');
     const [subscribed, setSubscribed] = useState(false);
@@ -25,12 +27,7 @@ const Footer = () => {
                     <div className="footer__brand">
                         <Link to="/" className="footer__logo">
                             <div className="footer__logo-icon">
-                                <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M16 2C9.373 2 4 7.373 4 14c0 4.418 2.865 8.166 6.839 9.489C11.439 25.633 13.5 29 16 30c2.5-1 4.561-4.367 5.161-6.511C25.135 22.166 28 18.418 28 14c0-6.627-5.373-12-12-12z" fill="currentColor" opacity="0.2" />
-                                    <circle cx="13" cy="13" r="2" fill="currentColor" />
-                                    <circle cx="19" cy="13" r="2" fill="currentColor" />
-                                    <path d="M12 17s1.5 2 4 2 4-2 4-2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-                                </svg>
+                                <img src={logo} alt="Martha Dental Clinic" />
                             </div>
                             <div className="footer__logo-text">
                                 <span className="footer__logo-name">Martha</span>

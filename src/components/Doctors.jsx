@@ -4,13 +4,18 @@ import { Stethoscope, Star, Calendar, Share2, Linkedin, Twitter } from 'lucide-r
 import { Link } from 'react-router-dom';
 import './Doctors.css';
 
+import doc1 from '../assets/doctors/doctor-1.png';
+import doc2 from '../assets/doctors/doctor-2.png';
+import doc3 from '../assets/doctors/doctor-3.png';
+import doc4 from '../assets/doctors/doctor-4.png';
+import doc5 from '../assets/doctors/doctor-5.png';
+
 const doctors = [
-    { name: 'Dr. Martha Johnson', role: 'Founder & Lead Dentist', specialty: 'Cosmetic Dentistry', experience: '15 years', rating: 4.9, color: 'var(--primary)' },
-    { name: 'Dr. James Williams', role: 'Senior Orthodontist', specialty: 'Orthodontics & Aligners', experience: '12 years', rating: 4.8, color: 'var(--accent-blue)' },
-    { name: 'Dr. Sarah Chen', role: 'Implant Specialist', specialty: 'Dental Implants & Surgery', experience: '10 years', rating: 4.9, color: 'var(--accent-rose)' },
-    { name: 'Dr. Michael Davis', role: 'Pediatric Dentist', specialty: 'Children\'s Dentistry', experience: '8 years', rating: 4.7, color: 'var(--eth-gold)' },
-    { name: 'Dr. Emily Roberts', role: 'Endodontist', specialty: 'Root Canal & Treatment', experience: '11 years', rating: 4.8, color: 'var(--primary-dark)' },
-    { name: 'Dr. David Park', role: 'Periodontist', specialty: 'Gum Disease & Treatment', experience: '9 years', rating: 4.9, color: 'var(--eth-coffee)' },
+    { name: 'Dr. Kebede Belete', role: 'Founder & Lead Dentist', specialty: 'Cosmetic Dentistry', experience: '15 years', rating: 4.9, color: 'var(--primary)', image: doc1 },
+    { name: 'Dr. Amsal Moges', role: 'Senior Orthodontist', specialty: 'Orthodontics & Aligners', experience: '12 years', rating: 4.8, color: 'var(--accent-blue)', image: doc2 },
+    { name: 'Dr. Sara Alemu', role: 'Implant Specialist', specialty: 'Dental Implants & Surgery', experience: '10 years', rating: 4.9, color: 'var(--accent-rose)', image: doc3 },
+    { name: 'Dr. Hiwot Dereje', role: 'Pediatric Dentist', specialty: 'Children\'s Dentistry', experience: '8 years', rating: 4.7, color: 'var(--eth-gold)', image: doc4 },
+    { name: 'Dr. Fikir Yohannis', role: 'Endodontist', specialty: 'Root Canal & Treatment', experience: '11 years', rating: 4.8, color: 'var(--primary-dark)', image: doc5 },
 ];
 
 const Doctors = () => {
@@ -47,10 +52,11 @@ const Doctors = () => {
                                 <div className="doctors__bg-pattern" style={{ background: `radial-gradient(circle at top right, ${doc.color}20, transparent 70%)` }}></div>
                                 <div className="doctors__avatar">
                                     <div className="doctors__avatar-inner" style={{ borderColor: doc.color }}>
-                                        <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <circle cx="40" cy="30" r="16" fill={`${doc.color}30`} stroke={doc.color} strokeWidth="2" />
-                                            <path d="M16 72c0-13.3 10.7-24 24-24s24 10.7 24 24" fill={`${doc.color}15`} stroke={doc.color} strokeWidth="2" />
-                                        </svg>
+                                        <img
+                                            src={doc.image}
+                                            alt={doc.name}
+                                            className="doctors__img"
+                                        />
                                     </div>
                                     <div className="doctors__rating glass-panel">
                                         <Star size={12} fill="#FFB546" stroke="#FFB546" />

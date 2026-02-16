@@ -35,24 +35,6 @@
     -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
 }
 
-.hero__tibeb-accent {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 12px;
-    /* Simplified Tibeb pattern using gradients */
-    background: repeating-linear-gradient(45deg,
-            var(--eth-gold),
-            var(--eth-gold) 10px,
-            var(--eth-coffee) 10px,
-            var(--eth-coffee) 20px,
-            var(--primary) 20px,
-            var(--primary) 30px);
-    z-index: 10;
-    opacity: 0.8;
-}
-
 .hero__orb {
     position: absolute;
     border-radius: 50%;

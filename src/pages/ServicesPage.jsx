@@ -43,8 +43,13 @@ const ServicesPage = () => {
                                 className={`services-page__item ${i % 2 === 1 ? 'services-page__item--reverse' : ''}`}
                                 initial={{ opacity: 0, y: 30 }}
                                 whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.5 }}
+                                viewport={{ once: true, margin: "-50px" }}
+                                transition={{
+                                    type: "spring",
+                                    stiffness: 50,
+                                    damping: 20,
+                                    delay: i * 0.05 // Much faster staggered delay
+                                }}
                             >
                                 <div className="services-page__icon-side">
                                     <div className="services-page__icon-wrapper" style={{ background: `${service.color}10`, borderColor: `${service.color}30` }}>
