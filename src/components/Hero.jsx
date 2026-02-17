@@ -1,7 +1,8 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Calendar, Sparkles, Shield, Clock, Award, MapPin } from 'lucide-react';
+import { ArrowRight, Calendar, Sparkles, Shield, Clock, Award, MapPin, Stethoscope } from 'lucide-react';
 import './Hero.css';
+import diagnosisImg from '../assets/diagnosis.jpg';
 
 const Hero = () => {
     return (
@@ -30,7 +31,6 @@ const Hero = () => {
             <div className="container hero__container">
                 <div className="hero__content">
 
-
                     <motion.h1
                         className="hero__title"
                         initial={{ opacity: 0, y: 30 }}
@@ -57,7 +57,7 @@ const Hero = () => {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.7, delay: 0.45 }}
                     >
-                        <Link to="/appointment" className="btn btn-primary btn-lg">
+                        <Link to="/appointment" className="btn btn-primary btn-lg btn-shine">
                             <Calendar size={20} />
                             Book Appointment
                         </Link>
@@ -95,33 +95,37 @@ const Hero = () => {
                     transition={{ duration: 0.8, delay: 0.4 }}
                 >
                     <div className="hero__image-wrapper">
-                        <div className="hero__image-bg animate-pulse-soft" />
-                        <div className="hero__graphic">
-                            {/* Abstract Tooth Representation */}
-                            <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" className="hero__svg">
-                                <circle cx="100" cy="100" r="90" stroke="url(#grad1)" strokeWidth="1" strokeDasharray="4 4" opacity="0.3" className="animate-spin-slow" />
-                                <path d="M100 40 C 60 40, 40 80, 50 120 C 55 140, 70 160, 100 160 C 130 160, 145 140, 150 120 C 160 80, 140 40, 100 40 Z"
-                                    fill="url(#grad2)" filter="url(#glow)" className="animate-float" />
-                                <path d="M70 70 Q 100 90 130 70" stroke="white" strokeWidth="4" strokeLinecap="round" opacity="0.8" />
-                                <defs>
-                                    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
-                                        <stop offset="0%" stopColor="var(--primary)" />
-                                        <stop offset="100%" stopColor="var(--eth-gold)" />
-                                    </linearGradient>
-                                    <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
-                                        <stop offset="0%" stopColor="var(--primary-light)" />
-                                        <stop offset="100%" stopColor="var(--primary)" />
-                                    </linearGradient>
-                                    <filter id="glow">
-                                        <feGaussianBlur stdDeviation="4" result="coloredBlur" />
-                                        <feMerge>
-                                            <feMergeNode in="coloredBlur" />
-                                            <feMergeNode in="SourceGraphic" />
-                                        </feMerge>
-                                    </filter>
-                                </defs>
-                            </svg>
-                        </div>
+                        {/* Decorative animated rings */}
+                        <div className="hero__ring hero__ring--outer animate-spin-slow" />
+                        <div className="hero__ring hero__ring--inner" />
+
+                        {/* Main image */}
+                        <motion.div
+                            className="hero__photo-frame"
+                            whileHover={{ scale: 1.03 }}
+                            transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+                        >
+                            <img
+                                src={diagnosisImg}
+                                alt="Dentist performing a diagnosis at Martha Dental Clinic"
+                                className="hero__photo"
+                                fetchPriority="high"
+                                loading="eager"
+                            />
+                            <div className="hero__photo-overlay" />
+                            <div className="hero__shimmer" />
+                        </motion.div>
+
+                        {/* Floating badge */}
+                        <motion.div
+                            className="hero__badge glass-card"
+                            initial={{ scale: 0, opacity: 0 }}
+                            animate={{ scale: 1, opacity: 1 }}
+                            transition={{ delay: 1.2, type: 'spring', stiffness: 200 }}
+                        >
+                            <Stethoscope size={18} className="text-primary" />
+                            <span>Expert Care</span>
+                        </motion.div>
                     </div>
 
                     <div className="hero__stats">

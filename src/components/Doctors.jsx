@@ -81,10 +81,10 @@ const Doctors = () => {
                                         <span className="doctors__meta-label">Experience</span>
                                         <span className="doctors__meta-value">{doc.experience}</span>
                                     </div>
-                                    <Link to="/appointment" className="btn btn-sm btn-secondary doctors__book-btn">
-                                        Book Now
-                                    </Link>
                                 </div>
+                                <Link to="/appointment" className="btn btn-secondary doctors__book-btn">
+                                    Book Now
+                                </Link>
                             </div>
                         </motion.div>
                     ))}

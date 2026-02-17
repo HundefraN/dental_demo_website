@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import ScrollReveal from '../components/ScrollReveal';
 import Hero from '../components/Hero';
 import Services from '../components/Services';
 import About from '../components/About';
@@ -16,15 +17,33 @@ const HomePage = () => {
     return (
         <>
             <Hero />
-            <Services />
-            <About />
-            <Doctors />
-            <BeforeAfter />
-            <Testimonials />
-            <Pricing />
-            <FAQ />
-            <Appointment />
-            <Contact />
+            <ScrollReveal>
+                <Services />
+            </ScrollReveal>
+            <ScrollReveal>
+                <BeforeAfter />
+            </ScrollReveal>
+            <ScrollReveal>
+                <About />
+            </ScrollReveal>
+            <ScrollReveal>
+                <Doctors />
+            </ScrollReveal>
+            <ScrollReveal>
+                <Testimonials />
+            </ScrollReveal>
+            <ScrollReveal>
+                <Pricing />
+            </ScrollReveal>
+            <ScrollReveal>
+                <FAQ />
+            </ScrollReveal>
+            <ScrollReveal>
+                <Appointment />
+            </ScrollReveal>
+            <ScrollReveal>
+                <Contact />
+            </ScrollReveal>
         </>
     );
 };

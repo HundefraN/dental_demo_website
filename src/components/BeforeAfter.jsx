@@ -95,6 +95,8 @@ const ComparisonCard = ({ item }) => {
                         background: item.afterColor,
                         backgroundImage: item.afterImg ? `url(${item.afterImg})` : 'none'
                     }}
+                    role="img"
+                    aria-label={`${item.title} after`}
                 >
                     <div className="ba-card__content">
                         <span className="ba-card__emoji">{item.icon}</span>
@@ -113,6 +115,8 @@ const ComparisonCard = ({ item }) => {
                         width: position,
                         willChange: 'width'
                     }}
+                    role="img"
+                    aria-label={`${item.title} before`}
                 >
                     <div className="ba-card__content">
                         <span className="ba-card__emoji" style={{ filter: 'grayscale(100%) opacity(0.5)' }}>{item.icon}</span>
@@ -148,7 +152,7 @@ const ComparisonCard = ({ item }) => {
 };
 
 const BeforeAfter = () => {
-    const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
+    const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.02 });
 
     return (
         <section className="section before-after" id="gallery">
@@ -171,11 +175,11 @@ const BeforeAfter = () => {
                     {cases.map((item, i) => (
                         <motion.div
                             key={item.title}
-                            initial={{ opacity: 0, y: 30 }}
+                            initial={{ opacity: 0, y: 20 }}
                             animate={inView ? { opacity: 1, y: 0 } : {}}
                             transition={{
-                                duration: 0.5,
-                                delay: i * 0.1, // Reduced delay
+                                duration: 0.4,
+                                delay: i * 0.05,
                                 type: "spring",
                                 stiffness: 50
                             }}

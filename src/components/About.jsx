@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Heart, Users, Award, MapPin, CheckCircle } from 'lucide-react';
 import './About.css';
-import logo from '../assets/logo.png';
+import logo from '../assets/logo.svg';
 
 const stats = [
     { icon: Heart, value: 15, suffix: '+', label: 'Years Experience' },
@@ -43,7 +43,7 @@ function Counter({ end, suffix, inView }) {
 }
 
 const About = () => {
-    const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
+    const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.02 });
 
     return (
         <section className="section about" id="about">
@@ -51,9 +51,9 @@ const About = () => {
                 <div className="about__grid" ref={ref}>
                     <motion.div
                         className="about__image-side"
-                        initial={{ opacity: 0, x: -40 }}
+                        initial={{ opacity: 0, x: -30 }}
                         animate={inView ? { opacity: 1, x: 0 } : {}}
-                        transition={{ duration: 0.5 }}
+                        transition={{ duration: 0.4, ease: "easeOut" }}
                     >
                         <div className="about__image-wrapper">
                             <div className="about__image-bg" />
@@ -64,7 +64,7 @@ const About = () => {
                                 className="about__experience-badge glass-card"
                                 initial={{ scale: 0 }}
                                 animate={inView ? { scale: 1 } : {}}
-                                transition={{ delay: 0.3, type: "spring" }}
+                                transition={{ delay: 0.2, type: "spring", stiffness: 260, damping: 20 }}
                             >
                                 <span className="about__experience-years text-gradient-gold">15+</span>
                                 <span className="about__experience-text">Years of<br />Excellence</span>
@@ -74,9 +74,9 @@ const About = () => {
 
                     <motion.div
                         className="about__content"
-                        initial={{ opacity: 0, x: 40 }}
+                        initial={{ opacity: 0, x: 30 }}
                         animate={inView ? { opacity: 1, x: 0 } : {}}
-                        transition={{ duration: 0.6, delay: 0.1 }}
+                        transition={{ duration: 0.4, ease: "easeOut" }}
                     >
                         <span className="section-badge">
                             <Heart size={14} />
@@ -104,7 +104,7 @@ const About = () => {
                                         className="about__why-item glass-card"
                                         initial={{ opacity: 0, x: 20 }}
                                         animate={inView ? { opacity: 1, x: 0 } : {}}
-                                        transition={{ delay: 0.2 + i * 0.05 }}
+                                        transition={{ delay: 0.1 + i * 0.04 }}
                                         whileHover={{ x: 5, backgroundColor: "var(--primary-50)" }}
                                     >
                                         <CheckCircle size={18} className="about__why-icon" />
@@ -121,9 +121,9 @@ const About = () => {
                         <motion.div
                             key={stat.label}
                             className="about__stat glass-card"
-                            initial={{ opacity: 0, y: 30 }}
+                            initial={{ opacity: 0, y: 20 }}
                             animate={inView ? { opacity: 1, y: 0 } : {}}
-                            transition={{ delay: 0.3 + i * 0.05 }}
+                            transition={{ delay: 0.2 + i * 0.04 }}
                             whileHover={{ y: -5 }}
                         >
                             <div className="about__stat-icon">

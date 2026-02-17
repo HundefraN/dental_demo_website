@@ -135,7 +135,9 @@
     white-space: nowrap;
 }
 
-/* Visual Side */
+/* ==========================================
+   VISUAL SIDE – PHOTO SHOWCASE
+   ========================================== */
 .hero__visual {
     position: relative;
     display: flex;
@@ -147,34 +149,146 @@
 .hero__image-wrapper {
     position: relative;
     width: 100%;
-    max-width: 480px;
+    max-width: 500px;
     aspect-ratio: 1;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.hero__image-bg {
+/* Decorative Rings */
+.hero__ring {
     position: absolute;
-    inset: 0;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(13, 148, 136, 0.06), transparent 70%);
-    border: 1px solid rgba(13, 148, 136, 0.08);
+    pointer-events: none;
 }
 
-.hero__graphic {
+.hero__ring--outer {
+    inset: -18px;
+    border: 2px dashed rgba(13, 148, 136, 0.18);
+}
+
+.hero__ring--inner {
+    inset: -6px;
+    border: 1.5px solid rgba(212, 175, 55, 0.22);
+    border-radius: 50%;
+    animation: pulse-ring 4s ease-in-out infinite;
+}
+
+@keyframes pulse-ring {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 0.22;
+    }
+
+    50% {
+        transform: scale(1.04);
+        opacity: 0.38;
+    }
+}
+
+/* Photo Frame */
+.hero__photo-frame {
+    position: relative;
+    width: 88%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    overflow: hidden;
+    z-index: 2;
+    box-shadow:
+        0 30px 60px -15px rgba(13, 148, 136, 0.30),
+        0 0 0 6px rgba(255, 255, 255, 0.60),
+        0 0 0 8px rgba(13, 148, 136, 0.12),
+        0 0 80px rgba(13, 148, 136, 0.10);
+    cursor: pointer;
+    transition: box-shadow 0.5s ease;
+}
+
+.hero__photo-frame:hover {
+    box-shadow:
+        0 35px 70px -15px rgba(13, 148, 136, 0.40),
+        0 0 0 6px rgba(255, 255, 255, 0.70),
+        0 0 0 8px rgba(212, 175, 55, 0.25),
+        0 0 100px rgba(13, 148, 136, 0.15);
+}
+
+.hero__photo {
     width: 100%;
     height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 2;
+    object-fit: cover;
+    display: block;
+    filter: contrast(1.04) saturate(1.08);
+    transition: transform 0.6s cubic-bezier(.25, .46, .45, .94);
 }
 
-.hero__svg {
-    width: 80%;
-    height: 80%;
-    filter: drop-shadow(0 20px 50px rgba(13, 148, 136, 0.25));
+.hero__photo-frame:hover .hero__photo {
+    transform: scale(1.06);
+}
+
+/* Gradient overlay on photo */
+.hero__photo-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg,
+            transparent 50%,
+            rgba(13, 148, 136, 0.12) 100%);
+    pointer-events: none;
+    z-index: 1;
+    border-radius: 50%;
+}
+
+/* Shimmer sweep */
+.hero__shimmer {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(110deg,
+            transparent 25%,
+            rgba(255, 255, 255, 0.25) 50%,
+            transparent 75%);
+    z-index: 2;
+    pointer-events: none;
+    border-radius: 50%;
+    animation: shimmer 4s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        transform: translateX(-120%);
+    }
+
+    40% {
+        transform: translateX(120%);
+    }
+
+    100% {
+        transform: translateX(120%);
+    }
+}
+
+/* Floating Badge */
+.hero__badge {
+    position: absolute;
+    bottom: 12%;
+    left: -10%;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    border-radius: var(--radius-full);
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    z-index: 10;
+    animation: float 5s ease-in-out infinite;
+    box-shadow: var(--shadow-lg);
+}
+
+.hero__badge span {
+    white-space: nowrap;
+    font-family: var(--font-display);
+    letter-spacing: 0.3px;
 }
 
 /* Stat Cards */
@@ -252,8 +366,13 @@
     }
 
     .hero__image-wrapper {
-        max-width: 340px;
+        max-width: 380px;
         margin: 0 auto;
+    }
+
+    .hero__badge {
+        left: 0;
+        bottom: 5%;
     }
 }
 
@@ -287,6 +406,14 @@
     .hero__stat-number {
         font-size: 1.8rem;
     }
+
+    .hero__image-wrapper {
+        max-width: 320px;
+    }
+
+    .hero__badge {
+        left: 5%;
+    }
 }
 
 @media (max-width: 640px) {
@@ -300,6 +427,13 @@
 
     .hero__image-wrapper {
         max-width: 280px;
+    }
+
+    .hero__badge {
+        bottom: 2%;
+        left: 0;
+        padding: 10px 16px;
+        font-size: 0.8rem;
     }
 }
 
@@ -319,5 +453,10 @@
 
     .hero__stat-label {
         font-size: 0.7rem;
+    }
+
+    .hero__ring--outer,
+    .hero__ring--inner {
+        display: none;
     }
 }

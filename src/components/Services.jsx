@@ -22,12 +22,12 @@ const cardVariants = {
     hidden: { opacity: 0, y: 30 },
     visible: (i) => ({
         opacity: 1, y: 0,
-        transition: { duration: 0.5, delay: i * 0.1, ease: "easeOut" }
+        transition: { duration: 0.4, delay: i * 0.05, ease: "easeOut" }
     })
 };
 
 const Services = () => {
-    const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
+    const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.02 });
 
     return (
         <section className="section services" id="services">

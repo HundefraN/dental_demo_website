@@ -172,16 +172,13 @@
 .doctors__meta {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
     width: 100%;
     margin-top: auto;
-    padding-top: 16px;
-}
-
-.doctors__exp {
-    text-align: left;
-    display: flex;
-    flex-direction: column;
+    padding-top: 24px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border-light);
+    margin-bottom: 20px;
 }
 
 .doctors__meta-label {
@@ -190,17 +187,20 @@
     font-weight: 600;
     text-transform: uppercase;
     font-family: var(--font-display);
+    letter-spacing: 0.5px;
 }
 
 .doctors__meta-value {
-    font-size: 0.95rem;
+    font-size: 1rem;
     font-weight: 700;
     color: var(--text-primary);
 }
 
 .doctors__book-btn {
-    padding: 10px 22px;
-    font-size: 0.85rem;
+    width: 100%;
+    justify-content: center;
+    padding: 14px;
+    font-size: 0.95rem;
 }
 
 /* ==========================================
