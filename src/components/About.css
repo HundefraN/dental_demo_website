@@ -1,26 +1,26 @@
 .about__grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1.2fr;
     gap: 80px;
     align-items: center;
-    margin-bottom: 80px;
+    margin-bottom: 100px;
 }
 
 .about__image-wrapper {
     position: relative;
     width: 100%;
     aspect-ratio: 1;
-    max-width: 520px;
+    max-width: 500px;
     margin: 0 auto;
 }
 
 .about__image-bg {
     position: absolute;
-    inset: -20px;
+    inset: -30px;
     background: radial-gradient(circle, var(--eth-gold-light), transparent 70%);
-    opacity: 0.1;
+    opacity: 0.08;
     z-index: 0;
-    filter: blur(40px);
+    filter: blur(50px);
 }
 
 .about__image-content {
@@ -30,29 +30,37 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 32px;
+    padding: 60px;
     border-radius: var(--radius-xl);
     z-index: 1;
-    /* Glass panel styles applied via class in JSX, but refined here if needed */
-    background: rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.5);
+    transition: transform 0.4s ease;
 }
 
-.about__image-content svg {
+.about__image-content:hover {
+    transform: scale(1.02);
+}
+
+.about__logo-img {
     width: 100%;
     height: 100%;
-    filter: drop-shadow(0 10px 20px rgba(13, 148, 136, 0.1));
+    object-fit: contain;
+    filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.08));
 }
 
+/* Experience Badge */
 .about__experience-badge {
     position: absolute;
-    bottom: -30px;
-    right: -30px;
+    bottom: -24px;
+    right: -24px;
     padding: 24px 32px;
     display: flex;
     align-items: center;
     gap: 16px;
     z-index: 5;
     background: #fff;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
 }
 
 [data-theme="dark"] .about__experience-badge {
@@ -73,22 +81,25 @@
     line-height: 1.3;
     text-transform: uppercase;
     letter-spacing: 1px;
+    font-family: var(--font-display);
 }
 
+/* About Text */
 .about__text {
     font-size: 1.05rem;
     color: var(--text-secondary);
-    line-height: 1.8;
+    line-height: 1.85;
     margin-bottom: 24px;
 }
 
+/* Why Us */
 .about__why {
-    margin-top: 40px;
+    margin-top: 44px;
 }
 
 .about__why-title {
-    font-family: var(--font-body);
-    font-size: 1.25rem;
+    font-family: var(--font-display);
+    font-size: 1.3rem;
     font-weight: 700;
     margin-bottom: 24px;
     color: var(--text-primary);
@@ -97,20 +108,19 @@
 .about__why-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 16px;
+    gap: 14px;
 }
 
 .about__why-item {
     display: flex;
     align-items: center;
     gap: 14px;
-    padding: 16px;
-    font-size: 0.95rem;
+    padding: 16px 18px;
+    font-size: 0.92rem;
     color: var(--text-primary);
     font-weight: 600;
-    transition: all var(--transition-fast);
-    /* Glass card styles */
-    background: rgba(255, 255, 255, 0.5);
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.6);
     border: 1px solid var(--border-light);
     border-radius: var(--radius-md);
 }
@@ -121,8 +131,13 @@
 }
 
 .about__why-item:hover {
-    border-color: var(--primary);
-    transform: translateX(5px);
+    border-color: var(--primary-light);
+    transform: translateX(6px);
+    background: var(--primary-50);
+}
+
+[data-theme="dark"] .about__why-item:hover {
+    background: rgba(13, 148, 136, 0.1);
 }
 
 .about__why-icon {
@@ -130,18 +145,37 @@
     flex-shrink: 0;
 }
 
-/* Stats */
+/* Stats Row */
 .about__stats {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 24px;
-    margin-top: 60px;
+    margin-top: 0;
 }
 
 .about__stat {
     text-align: center;
-    padding: 32px 20px;
+    padding: 36px 20px;
     background: #fff;
+    border-radius: var(--radius-lg);
+    position: relative;
+    overflow: hidden;
+}
+
+.about__stat::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--gradient-teal);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.about__stat:hover::before {
+    opacity: 1;
 }
 
 [data-theme="dark"] .about__stat {
@@ -149,16 +183,21 @@
 }
 
 .about__stat-icon {
-    width: 56px;
-    height: 56px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto 16px;
+    margin: 0 auto 18px;
     background: var(--primary-50);
     color: var(--primary);
     box-shadow: inset 0 0 20px rgba(13, 148, 136, 0.1);
+    transition: transform 0.4s ease;
+}
+
+.about__stat:hover .about__stat-icon {
+    transform: scale(1.1) rotate(-5deg);
 }
 
 [data-theme="dark"] .about__stat-icon {
@@ -174,31 +213,93 @@
 }
 
 .about__stat-label {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     color: var(--text-secondary);
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 1px;
+    font-family: var(--font-display);
 }
+
+/* ==========================================
+   RESPONSIVE
+   ========================================== */
 
 @media (max-width: 1024px) {
     .about__grid {
         grid-template-columns: 1fr;
         gap: 60px;
+        text-align: center;
     }
 
     .about__image-wrapper {
-        max-width: 420px;
+        max-width: 380px;
     }
 
     .about__stats {
         grid-template-columns: repeat(2, 1fr);
-        gap: 24px;
+        gap: 20px;
+    }
+
+    .section-title[style] {
+        text-align: center !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .about__grid {
+        gap: 40px;
+        margin-bottom: 60px;
+    }
+
+    .about__image-wrapper {
+        max-width: 300px;
+    }
+
+    .about__image-content {
+        padding: 40px;
+    }
+
+    .about__experience-badge {
+        bottom: -16px;
+        right: -8px;
+        padding: 16px 20px;
+    }
+
+    .about__experience-years {
+        font-size: 1.8rem;
+    }
+
+    .about__stat {
+        padding: 24px 16px;
+    }
+
+    .about__stat-number {
+        font-size: 2rem;
     }
 }
 
 @media (max-width: 640px) {
     .about__why-grid {
         grid-template-columns: 1fr;
+    }
+
+    .about__stats {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .about__image-content {
+        padding: 24px;
+    }
+
+    .about__stat-icon {
+        width: 48px;
+        height: 48px;
+    }
+
+    .about__stat-number {
+        font-size: 1.75rem;
     }
 }

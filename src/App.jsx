@@ -29,21 +29,24 @@ const PageLoader = () => (
 
 function App() {
   return (
-    <BrowserRouter>
-      <Navbar />
-      <main>
-        <Suspense fallback={<PageLoader />}>
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/services" element={<ServicesPage />} />
-            <Route path="/about" element={<AboutPage />} />
-            <Route path="/contact" element={<ContactPage />} />
-            <Route path="/appointment" element={<AppointmentPage />} />
-          </Routes>
-        </Suspense>
-      </main>
-      <Footer />
-    </BrowserRouter>
+    <>
+      <div className="noise-overlay" />
+      <BrowserRouter>
+        <Navbar />
+        <main>
+          <Suspense fallback={<PageLoader />}>
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/services" element={<ServicesPage />} />
+              <Route path="/about" element={<AboutPage />} />
+              <Route path="/contact" element={<ContactPage />} />
+              <Route path="/appointment" element={<AppointmentPage />} />
+            </Routes>
+          </Suspense>
+        </main>
+        <Footer />
+      </BrowserRouter>
+    </>
   );
 }
 

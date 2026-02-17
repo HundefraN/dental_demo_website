@@ -12,25 +12,24 @@
     border-radius: var(--radius-xl);
     overflow: hidden;
     height: 100%;
-    /* Glass card styles */
-    background: rgba(255, 255, 255, 0.6);
+    background: rgba(255, 255, 255, 0.7);
     border: 1px solid var(--border);
-    transition: all var(--transition);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 [data-theme="dark"] .ba-card {
-    background: rgba(30, 41, 59, 0.4);
+    background: rgba(30, 41, 59, 0.5);
     border-color: rgba(255, 255, 255, 0.05);
 }
 
 .ba-card:hover {
-    box-shadow: var(--shadow-lg);
-    transform: translateY(-5px);
+    box-shadow: var(--shadow-xl);
+    transform: translateY(-8px);
 }
 
 .ba-card__viewer {
     position: relative;
-    height: 300px;
+    height: 320px;
     cursor: col-resize;
     user-select: none;
     overflow: hidden;
@@ -46,19 +45,17 @@
 }
 
 .ba-card__image--after {
-    /* Background image is set inline */
     background-size: cover !important;
     background-position: center !important;
     z-index: 1;
 }
 
 .ba-card__image--before {
-    /* Background image is set inline */
     background-size: cover !important;
     background-position: center !important;
     z-index: 2;
-    border-right: 2px solid #fff;
-    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    border-right: 2px solid rgba(255, 255, 255, 0.9);
+    box-shadow: 3px 0 12px rgba(0, 0, 0, 0.15);
 }
 
 .ba-card__content {
@@ -75,14 +72,15 @@
 }
 
 .ba-card__label {
-    font-size: 0.75rem;
+    font-size: 0.72rem;
     font-weight: 800;
-    letter-spacing: 1px;
-    padding: 4px 10px;
-    background: rgba(0, 0, 0, 0.5);
+    letter-spacing: 1.5px;
+    padding: 5px 14px;
+    background: rgba(0, 0, 0, 0.55);
     color: #fff;
     border-radius: var(--radius-sm);
-    backdrop-filter: blur(4px);
+    backdrop-filter: blur(8px);
+    font-family: var(--font-display);
 }
 
 .ba-card__shine {
@@ -91,63 +89,69 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, transparent 40%, rgba(255, 255, 255, 0.4) 50%, transparent 60%);
+    background: linear-gradient(135deg, transparent 40%, rgba(255, 255, 255, 0.35) 50%, transparent 60%);
     z-index: 1;
-    opacity: 0.5;
+    opacity: 0.4;
 }
 
+/* Slider Handle */
 .ba-card__handle {
     position: absolute;
     top: 0;
     bottom: 0;
-    width: 40px;
-    margin-left: -20px;
-    /* Center centered on the line */
+    width: 44px;
+    margin-left: -22px;
     z-index: 10;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     pointer-events: none;
-    /* Let clicks pass to container */
 }
 
 .ba-card__line {
     width: 2px;
     height: 100%;
-    background: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.25);
 }
 
 .ba-card__circle {
     position: absolute;
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
     border-radius: 50%;
     background: #fff;
     color: var(--primary);
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
 }
 
+.ba-card:hover .ba-card__circle {
+    transform: scale(1.1);
+}
+
+/* Card Info */
 .ba-card__info {
-    padding: 24px;
+    padding: 24px 28px;
 }
 
 .ba-card__title {
     font-family: var(--font-heading);
-    font-size: 1.15rem;
+    font-size: 1.2rem;
     font-weight: 700;
-    margin-bottom: 6px;
+    margin-bottom: 8px;
     color: var(--text-primary);
 }
 
 .ba-card__desc {
-    font-size: 0.9rem;
+    font-size: 0.92rem;
     color: var(--text-secondary);
     margin-bottom: 16px;
+    line-height: 1.6;
 }
 
 .ba-card__result {
@@ -157,14 +161,42 @@
     font-size: 0.85rem;
     font-weight: 600;
     color: var(--text-primary);
+    font-family: var(--font-display);
+}
+
+/* ==========================================
+   RESPONSIVE
+   ========================================== */
+
+@media (max-width: 1024px) {
+    .ba-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+    }
+
+    .ba-card__viewer {
+        height: 280px;
+    }
 }
 
 @media (max-width: 768px) {
     .ba-grid {
         grid-template-columns: 1fr;
+        max-width: 500px;
+        margin: 0 auto;
     }
 
     .ba-card__viewer {
-        height: 250px;
+        height: 260px;
+    }
+}
+
+@media (max-width: 480px) {
+    .ba-card__viewer {
+        height: 220px;
+    }
+
+    .ba-card__info {
+        padding: 20px;
     }
 }

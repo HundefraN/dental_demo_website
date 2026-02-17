@@ -4,8 +4,15 @@ import { useInView } from 'react-intersection-observer';
 import { Camera, MoveHorizontal, Check } from 'lucide-react';
 import './BeforeAfter.css';
 
-import whiteningBefore from '../assets/before-after/whitening-before.jpg';
-import whiteningAfter from '../assets/before-after/whitening-after.jpg';
+import whiteningBefore from '../assets/before-after/whiteningBefore.png';
+import whiteningAfter from '../assets/before-after/whiteningAfter.png';
+import ceramicBefore from '../assets/before-after/ceramicBefore.png';
+import ceramicAfter from '../assets/before-after/ceramicAfter.png';
+import alignerBefore from '../assets/before-after/alignerBefore.jpg';
+import alignerAfter from '../assets/before-after/alignerAfter.jpg';
+import zirconiaBefore from '../assets/before-after/Single tooth replacement with zirconia crown before.jpg';
+import zirconiaAfter from '../assets/before-after/Single tooth replacement with zirconia crown after.jpg';
+
 
 const cases = [
     {
@@ -15,28 +22,34 @@ const cases = [
         afterColor: '#ffffff', // Fallback
         beforeImg: whiteningBefore,
         afterImg: whiteningAfter,
-        icon: '🦷'
+        icon: ''
     },
     {
         title: 'Ceramic Veneers',
         desc: 'Complete smile makeover with 8 upper veneers.',
         beforeColor: '#e5e5e5',
         afterColor: '#fafafa',
-        icon: '✨'
+        beforeImg: ceramicBefore,
+        afterImg: ceramicAfter,
+        icon: ''
     },
     {
-        title: 'Invisalign Treatment',
+        title: 'Clear Aligner Therapy',
         desc: '12 months clear aligner therapy.',
         beforeColor: '#d4d4d4',
         afterColor: '#ffffff',
-        icon: '😁'
+        beforeImg: alignerBefore,
+        afterImg: alignerAfter,
+        icon: ''
     },
     {
         title: 'Dental Implants',
         desc: 'Single tooth replacement with zirconia crown.',
         beforeColor: '#a3a3a3',
         afterColor: '#ffffff',
-        icon: '🛠️'
+        beforeImg: zirconiaBefore,
+        afterImg: zirconiaAfter,
+        icon: ''
     }
 ];
 

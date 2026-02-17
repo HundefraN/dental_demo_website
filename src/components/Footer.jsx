@@ -3,7 +3,7 @@ import { ArrowUp, Mail, Phone, MapPin, Instagram, Facebook, Twitter, Linkedin, H
 import { useState } from 'react';
 import './Footer.css';
 
-import logo from '../assets/logo.svg';
+import logo from '../assets/logo.png';
 
 const Footer = () => {
     const [email, setEmail] = useState('');

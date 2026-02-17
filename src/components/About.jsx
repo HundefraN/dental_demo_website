@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Heart, Users, Award, MapPin, CheckCircle } from 'lucide-react';
 import './About.css';
+import logo from '../assets/logo.png';
 
 const stats = [
     { icon: Heart, value: 15, suffix: '+', label: 'Years Experience' },
@@ -42,7 +43,7 @@ function Counter({ end, suffix, inView }) {
 }
 
 const About = () => {
-    const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.2 });
+    const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
 
     return (
         <section className="section about" id="about">
@@ -52,28 +53,18 @@ const About = () => {
                         className="about__image-side"
                         initial={{ opacity: 0, x: -40 }}
                         animate={inView ? { opacity: 1, x: 0 } : {}}
-                        transition={{ duration: 0.7 }}
+                        transition={{ duration: 0.5 }}
                     >
                         <div className="about__image-wrapper">
                             <div className="about__image-bg" />
                             <div className="about__image-content glass-panel">
-                                {/* Abstract Clinic Representation */}
-                                <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg" className="about__svg">
-                                    <path d="M50 350L350 350" stroke="var(--border)" strokeWidth="2" />
-                                    <rect x="100" y="100" width="200" height="250" rx="8" fill="var(--bg-secondary)" stroke="var(--primary-light)" strokeWidth="2" />
-                                    <path d="M100 150H300" stroke="var(--primary-light)" strokeWidth="1" strokeDasharray="4 4" />
-                                    <circle cx="200" cy="200" r="40" stroke="var(--primary)" strokeWidth="4" />
-                                    <path d="M200 180V220M180 200H220" stroke="var(--primary)" strokeWidth="4" strokeLinecap="round" />
-                                    <rect x="120" y="280" width="160" height="40" rx="4" fill="var(--primary-50)" />
-                                    <circle cx="50" cy="50" r="20" fill="var(--eth-gold)" opacity="0.2" className="animate-float" />
-                                    <circle cx="350" cy="80" r="10" fill="var(--accent-rose)" opacity="0.2" className="animate-float-slow" />
-                                </svg>
+                                <img src={logo} alt="Martha Dental Clinic" className="about__logo-img" />
                             </div>
                             <motion.div
                                 className="about__experience-badge glass-card"
                                 initial={{ scale: 0 }}
                                 animate={inView ? { scale: 1 } : {}}
-                                transition={{ delay: 0.5, type: "spring" }}
+                                transition={{ delay: 0.3, type: "spring" }}
                             >
                                 <span className="about__experience-years text-gradient-gold">15+</span>
                                 <span className="about__experience-text">Years of<br />Excellence</span>
@@ -85,7 +76,7 @@ const About = () => {
                         className="about__content"
                         initial={{ opacity: 0, x: 40 }}
                         animate={inView ? { opacity: 1, x: 0 } : {}}
-                        transition={{ duration: 0.7, delay: 0.2 }}
+                        transition={{ duration: 0.6, delay: 0.1 }}
                     >
                         <span className="section-badge">
                             <Heart size={14} />
@@ -113,7 +104,7 @@ const About = () => {
                                         className="about__why-item glass-card"
                                         initial={{ opacity: 0, x: 20 }}
                                         animate={inView ? { opacity: 1, x: 0 } : {}}
-                                        transition={{ delay: 0.4 + i * 0.08 }}
+                                        transition={{ delay: 0.2 + i * 0.05 }}
                                         whileHover={{ x: 5, backgroundColor: "var(--primary-50)" }}
                                     >
                                         <CheckCircle size={18} className="about__why-icon" />
@@ -132,7 +123,7 @@ const About = () => {
                             className="about__stat glass-card"
                             initial={{ opacity: 0, y: 30 }}
                             animate={inView ? { opacity: 1, y: 0 } : {}}
-                            transition={{ delay: 0.5 + i * 0.1 }}
+                            transition={{ delay: 0.3 + i * 0.05 }}
                             whileHover={{ y: -5 }}
                         >
                             <div className="about__stat-icon">
