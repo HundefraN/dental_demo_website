@@ -193,10 +193,14 @@
 
 @media (max-width: 480px) {
     .ba-card__viewer {
-        height: 220px;
+        height: 200px;
     }
 
     .ba-card__info {
-        padding: 20px;
+        padding: 16px;
+    }
+
+    .ba-card__title {
+        font-size: 1.1rem;
     }
 }

@@ -11,15 +11,16 @@ import doc4 from '../assets/doctors/doctor-4.png';
 import doc5 from '../assets/doctors/doctor-5.png';
 
 const doctors = [
-    { name: 'Dr. Kebede Belete', role: 'Founder & Lead Dentist', specialty: 'Cosmetic Dentistry', experience: '15 years', rating: 4.9, color: 'var(--primary)', image: doc1 },
-    { name: 'Dr. Amsal Moges', role: 'Senior Orthodontist', specialty: 'Orthodontics & Aligners', experience: '12 years', rating: 4.8, color: 'var(--accent-blue)', image: doc2 },
-    { name: 'Dr. Sara Alemu', role: 'Implant Specialist', specialty: 'Dental Implants & Surgery', experience: '10 years', rating: 4.9, color: 'var(--accent-rose)', image: doc3 },
-    { name: 'Dr. Hiwot Dereje', role: 'Pediatric Dentist', specialty: 'Children\'s Dentistry', experience: '8 years', rating: 4.7, color: 'var(--eth-gold)', image: doc4 },
-    { name: 'Dr. Fikir Yohannis', role: 'Endodontist', specialty: 'Root Canal & Treatment', experience: '11 years', rating: 4.8, color: 'var(--primary-dark)', image: doc5 },
+    { name: 'Dr. Kebede Belete', role: 'Founder & Lead Dentist', specialty: 'Cosmetic Dentistry', experience: ' 15 years', rating: 4.9, color: 'var(--primary)', image: doc1 },
+    { name: 'Dr. Amsal Moges', role: 'Senior Orthodontist', specialty: 'Orthodontics & Aligners', experience: ' 12 years', rating: 4.8, color: 'var(--accent-blue)', image: doc2 },
+    { name: 'Dr. Sara Alemu', role: 'Implant Specialist', specialty: 'Dental Implants & Surgery', experience: ' 10 years', rating: 4.9, color: 'var(--accent-rose)', image: doc3 },
+    { name: 'Dr. Hiwot Dereje', role: 'Pediatric Dentist', specialty: 'Children\'s Dentistry', experience: ' 8 years', rating: 4.7, color: 'var(--eth-gold)', image: doc4 },
+    { name: 'Dr. Fikir Yohannis', role: 'Endodontist', specialty: 'Root Canal & Treatment', experience: ' 11 years', rating: 4.8, color: 'var(--primary-dark)', image: doc5 },
 ];
 
 const Doctors = () => {
     const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
+    const spring = { type: "spring", stiffness: 50, damping: 20 };
 
     return (
         <section className="section doctors" id="doctors">
@@ -43,10 +44,10 @@ const Doctors = () => {
                         <motion.div
                             key={doc.name}
                             className="doctors__card glass-card"
-                            initial={{ opacity: 0, y: 30 }}
+                            initial={{ opacity: 0, y: 50 }}
                             animate={inView ? { opacity: 1, y: 0 } : {}}
-                            transition={{ duration: 0.5, delay: i * 0.1 }}
-                            whileHover={{ y: -8, transition: { duration: 0.3 } }}
+                            transition={{ ...spring, delay: i * 0.1 }}
+                            whileHover={{ y: -10, transition: { duration: 0.2 } }}
                         >
                             <div className="doctors__image-wrapper">
                                 <div className="doctors__bg-pattern" style={{ background: `radial-gradient(circle at top right, ${doc.color}20, transparent 70%)` }}></div>

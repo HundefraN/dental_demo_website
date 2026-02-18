@@ -62,9 +62,9 @@ const Navbar = () => {
           <div className="navbar__info hidden-mobile">
             <div className="navbar__info-item">
               <MapPin size={16} className="text-primary" />
-              <span className="text-xs text-secondary">Shashemene, Kebele 04</span>
+              <span className="text-xs text-secondary">Shashemene, Abosto</span>
             </div>
-            <a href="tel:+251911234567" className="navbar__info-item">
+            <a href="tel:+251911338056" className="navbar__info-item">
               <Phone size={16} className="text-primary" />
               <span className="text-xs font-bold">+251 911 234 567</span>
             </a>

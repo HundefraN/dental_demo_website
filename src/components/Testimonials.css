@@ -214,20 +214,37 @@
 
 @media (max-width: 480px) {
     .testimonials__card {
-        padding: 36px 20px;
+        padding: 24px 16px;
+        min-height: auto;
     }
 
     .testimonials__text {
+        font-size: 0.95rem;
+        line-height: 1.6;
+        margin-bottom: 24px;
+    }
+
+    .testimonials__avatar {
+        width: 48px;
+        height: 48px;
         font-size: 1rem;
+    }
+
+    .testimonials__name {
+        font-size: 1rem;
+    }
+
+    .testimonials__treatment {
+        font-size: 0.7rem;
     }
 
     .testimonials__controls {
         gap: 16px;
-        margin-top: 32px;
+        margin-top: 24px;
     }
 
     .testimonials__arrow {
-        width: 40px;
-        height: 40px;
+        width: 36px;
+        height: 36px;
     }
 }

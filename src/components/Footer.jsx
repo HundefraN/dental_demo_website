@@ -92,7 +92,7 @@ const Footer = () => {
                             </div>
                             <div className="footer__contact-row">
                                 <MapPin size={14} />
-                                <span>Kebele 04, Shashemene</span>
+                                <span>Abosto, Shashemene</span>
                             </div>
                         </div>
                     </div>

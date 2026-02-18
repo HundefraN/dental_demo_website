@@ -5,9 +5,9 @@ import { useState } from 'react';
 import './Contact.css';
 
 const contactInfo = [
-    { icon: MapPin, title: 'Visit Us', lines: ['Kebele 04, Shashemene', 'Oromia Region, Ethiopia'], delay: 0 },
+    { icon: MapPin, title: 'Visit Us', lines: ['Abosto, Shashemene', 'Oromia Region, Ethiopia'], delay: 0 },
     { icon: Phone, title: 'Call Us', lines: ['+251 911 234 567', '+251 46 110 5555'], delay: 0.1 },
-    { icon: Mail, title: 'Email Us', lines: ['info@marthadental.et', 'appointments@marthadental.et'], delay: 0.2 },
+    { icon: Mail, title: 'Email Us', lines: ['post@marthadental.et', 'care@marthadental.et'], delay: 0.2 },
     { icon: Clock, title: 'Working Hours', lines: ['Mon-Fri: 8AM - 7PM', 'Sat: 9AM - 5PM'], delay: 0.3 },
 ];
 
@@ -20,6 +20,8 @@ const Contact = () => {
         setSent(true);
         setTimeout(() => setSent(false), 3000);
     };
+
+    const spring = { type: "spring", stiffness: 50, damping: 20 };
 
     return (
         <section className="section contact" id="contact">
@@ -43,10 +45,10 @@ const Contact = () => {
                         <motion.div
                             key={info.title}
                             className="contact__card glass-card"
-                            initial={{ opacity: 0, y: 30 }}
+                            initial={{ opacity: 0, y: 50 }}
                             animate={inView ? { opacity: 1, y: 0 } : {}}
-                            transition={{ duration: 0.5, delay: info.delay }}
-                            whileHover={{ y: -5, transition: { duration: 0.2 } }}
+                            transition={{ ...spring, delay: info.delay }}
+                            whileHover={{ y: -10, transition: { duration: 0.2 } }}
                         >
                             <div className="contact__card-icon">
                                 <info.icon size={24} />
@@ -64,9 +66,9 @@ const Contact = () => {
                 <div className="contact__content">
                     <motion.div
                         className="contact__map-wrapper glass-card"
-                        initial={{ opacity: 0, x: -30 }}
+                        initial={{ opacity: 0, x: -50 }}
                         animate={inView ? { opacity: 1, x: 0 } : {}}
-                        transition={{ duration: 0.6, delay: 0.2 }}
+                        transition={{ ...spring, delay: 0.2 }}
                     >
                         <div className="contact__map-frame">
                             <iframe
@@ -92,9 +94,9 @@ const Contact = () => {
 
                     <motion.div
                         className="contact__form-wrapper glass-card"
-                        initial={{ opacity: 0, x: 30 }}
+                        initial={{ opacity: 0, x: 50 }}
                         animate={inView ? { opacity: 1, x: 0 } : {}}
-                        transition={{ duration: 0.6, delay: 0.3 }}
+                        transition={{ ...spring, delay: 0.4 }}
                     >
                         <form className="contact__form" onSubmit={handleSubmit}>
                             <div className="contact__form-header">
@@ -115,13 +117,18 @@ const Contact = () => {
                             <div className="contact__field">
                                 <textarea rows={5} placeholder="How can we help you?" required className="contact__input"></textarea>
                             </div>
-                            <button type="submit" className="btn btn-primary contact__submit">
+                            <motion.button
+                                type="submit"
+                                className="btn btn-primary contact__submit"
+                                whileHover={{ scale: 1.02 }}
+                                whileTap={{ scale: 0.98 }}
+                            >
                                 {sent ? (
                                     <>Message Sent <span style={{ marginLeft: '8px' }}>✨</span></>
                                 ) : (
                                     <>Send Message <Send size={18} /></>
                                 )}
-                            </button>
+                            </motion.button>
                         </form>
                     </motion.div>
                 </div>

@@ -10,18 +10,18 @@
 }
 
 .navbar--scrolled {
-    background: rgba(255, 255, 255, 0.88);
-    backdrop-filter: blur(24px) saturate(180%);
-    -webkit-backdrop-filter: blur(24px) saturate(180%);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.04);
-    box-shadow: 0 1px 20px rgba(0, 0, 0, 0.04);
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--backdrop-blur)) saturate(180%);
+    -webkit-backdrop-filter: blur(var(--backdrop-blur)) saturate(180%);
+    border-bottom: 1px solid var(--glass-border);
+    box-shadow: var(--shadow-sm);
     padding: 10px 0;
 }
 
 [data-theme="dark"] .navbar--scrolled {
-    background: rgba(15, 23, 42, 0.88);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-    box-shadow: 0 1px 20px rgba(0, 0, 0, 0.15);
+    background: var(--glass-bg-dark);
+    border-bottom: 1px solid var(--glass-border);
+    box-shadow: var(--shadow-sm);
 }
 
 .navbar__container {
@@ -83,18 +83,18 @@
     display: flex;
     align-items: center;
     gap: 4px;
-    background: rgba(255, 255, 255, 0.6);
+    background: var(--glass-bg);
     padding: 6px 8px;
     border-radius: var(--radius-full);
-    border: 1px solid rgba(0, 0, 0, 0.04);
+    border: 1px solid var(--glass-border);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.03);
+    box-shadow: var(--shadow-sm);
 }
 
 [data-theme="dark"] .navbar__links {
-    background: rgba(30, 41, 59, 0.5);
-    border-color: rgba(255, 255, 255, 0.04);
+    background: var(--glass-bg-dark);
+    border-color: var(--glass-border);
 }
 
 .navbar__link {
@@ -306,11 +306,16 @@
     }
 
     .navbar__logo-name {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
     }
 
     .navbar__logo-icon {
-        width: 36px;
-        height: 36px;
+        width: 32px;
+        height: 32px;
+    }
+
+    .navbar__link {
+        padding: 14px 20px;
+        font-size: 1rem;
     }
 }

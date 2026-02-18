@@ -7,7 +7,7 @@ import './Pricing.css';
 const plans = [
     {
         name: 'Basic Care',
-        price: 49,
+        price: '9,500',
         period: '/month',
         description: 'Essential dental care for individuals',
         icon: Star,
@@ -24,7 +24,7 @@ const plans = [
     },
     {
         name: 'Premium',
-        price: 89,
+        price: '11,800',
         period: '/month',
         description: 'Comprehensive care with cosmetic perks',
         icon: Crown,
@@ -42,7 +42,7 @@ const plans = [
     },
     {
         name: 'Family Plan',
-        price: 149,
+        price: '13,500',
         period: '/month',
         description: 'Complete coverage for the whole family',
         icon: Users,
@@ -62,6 +62,7 @@ const plans = [
 
 const Pricing = () => {
     const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
+    const spring = { type: "spring", stiffness: 50, damping: 20 };
 
     return (
         <section className="section pricing" id="pricing">
@@ -85,10 +86,10 @@ const Pricing = () => {
                         <motion.div
                             key={plan.name}
                             className={`pricing__card glass-card ${plan.popular ? 'pricing__card--popular' : ''}`}
-                            initial={{ opacity: 0, y: 30 }}
+                            initial={{ opacity: 0, y: 50 }}
                             animate={inView ? { opacity: 1, y: 0 } : {}}
-                            transition={{ duration: 0.5, delay: i * 0.12 }}
-                            whileHover={{ y: -8, transition: { duration: 0.3 } }}
+                            transition={{ ...spring, delay: i * 0.12 }}
+                            whileHover={{ y: -12, transition: { duration: 0.2 } }}
                         >
                             {plan.popular && (
                                 <div className="pricing__popular-badge">Most Popular</div>
@@ -100,8 +101,8 @@ const Pricing = () => {
                                 <h3 className="pricing__name">{plan.name}</h3>
                                 <p className="pricing__desc">{plan.description}</p>
                                 <div className="pricing__price">
-                                    <span className="pricing__currency">$</span>
                                     <span className="pricing__amount text-gradient">{plan.price}</span>
+                                    <span className="pricing__currency">Birr</span>
                                     <span className="pricing__period">{plan.period}</span>
                                 </div>
                             </div>

@@ -172,7 +172,7 @@
     inset: -6px;
     border: 1.5px solid rgba(212, 175, 55, 0.22);
     border-radius: 50%;
-    animation: pulse-ring 4s ease-in-out infinite;
+    animation: pulse-ring 3s ease-in-out infinite;
 }
 
 @keyframes pulse-ring {
@@ -250,7 +250,7 @@
     z-index: 2;
     pointer-events: none;
     border-radius: 50%;
-    animation: shimmer 4s ease-in-out infinite;
+    animation: shimmer 2.5s ease-in-out infinite;
 }
 
 @keyframes shimmer {
@@ -281,7 +281,7 @@
     font-weight: 700;
     color: var(--text-primary);
     z-index: 10;
-    animation: float 5s ease-in-out infinite;
+    animation: float 3s ease-in-out infinite;
     box-shadow: var(--shadow-lg);
 }
 
@@ -438,25 +438,47 @@
 }
 
 @media (max-width: 480px) {
+    .hero {
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+
     .hero__title {
-        font-size: 2.5rem;
+        font-size: 2rem;
+        margin-bottom: 16px;
+    }
+
+    .hero__subtitle {
+        font-size: 0.95rem;
+        margin-bottom: 24px;
+        line-height: 1.5;
     }
 
     .hero__stat {
-        min-width: 100px;
-        padding: 14px 16px;
+        min-width: 80px;
+        padding: 10px 12px;
     }
 
     .hero__stat-number {
-        font-size: 1.5rem;
+        font-size: 1.25rem;
     }
 
     .hero__stat-label {
-        font-size: 0.7rem;
+        font-size: 0.6rem;
     }
 
     .hero__ring--outer,
     .hero__ring--inner {
         display: none;
+    }
+
+    .hero__actions {
+        gap: 12px;
+        margin-bottom: 32px;
+    }
+
+    .btn {
+        padding: 14px 20px;
+        font-size: 0.95rem;
     }
 }

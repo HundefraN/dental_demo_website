@@ -121,7 +121,7 @@ const Appointment = () => {
 
                         <div className="appointment__contact-box">
                             <p>Need immediate assistance?</p>
-                            <a href="tel:+251911234567" className="appointment__phone-link">
+                            <a href="tel:+251911338056" className="appointment__phone-link">
                                 <Phone size={18} /> Call (251) 911-234-567
                             </a>
                         </div>

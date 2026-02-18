@@ -115,17 +115,22 @@
 
 @media (max-width: 480px) {
     .faq__question {
-        padding: 18px 20px;
-        font-size: 0.95rem;
-        gap: 14px;
+        padding: 14px 16px;
+        font-size: 0.9rem;
+        gap: 12px;
     }
 
     .faq__icon-wrapper {
-        width: 32px;
-        height: 32px;
+        width: 28px;
+        height: 28px;
     }
 
     .faq__answer-content {
-        padding: 0 20px 20px;
+        padding: 0 16px 16px;
+    }
+
+    .faq__answer p {
+        font-size: 0.85rem;
+        line-height: 1.6;
     }
 }

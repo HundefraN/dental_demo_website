@@ -1,9 +1,10 @@
 import { useEffect, useState, useRef } from 'react';
-import { motion } from 'framer-motion';
+import { motion, animate } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Heart, Users, Award, MapPin, CheckCircle } from 'lucide-react';
 import './About.css';
-import logo from '../assets/logo.svg';
+import logo from '../assets/logo.png';
+import Counter from './Counter';
 
 const stats = [
     { icon: Heart, value: 15, suffix: '+', label: 'Years Experience' },
@@ -21,39 +22,19 @@ const whyUs = [
     'Warm, family-friendly environment',
 ];
 
-function Counter({ end, suffix, inView }) {
-    const [count, setCount] = useState(0);
-    const hasAnimated = useRef(false);
-
-    useEffect(() => {
-        if (!inView || hasAnimated.current) return;
-        hasAnimated.current = true;
-        let start = 0;
-        const step = end > 100 ? Math.ceil(end / 60) : 1;
-        const interval = setInterval(() => {
-            start += step;
-            if (start >= end) { setCount(end); clearInterval(interval); }
-            else setCount(start);
-        }, 25);
-        return () => clearInterval(interval);
-    }, [inView, end]);
-
-    const formatted = end >= 1000 ? `${(count / 1000).toFixed(count >= end ? 0 : 1)}K` : count;
-    return <>{formatted}{suffix}</>;
-}
-
 const About = () => {
-    const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.02 });
+    const [headerRef, headerInView] = useInView({ triggerOnce: true, threshold: 0.1 });
+    const [statsRef, statsInView] = useInView({ triggerOnce: true, threshold: 0.1 });
 
     return (
         <section className="section about" id="about">
             <div className="container">
-                <div className="about__grid" ref={ref}>
+                <div className="about__grid" ref={headerRef}>
                     <motion.div
                         className="about__image-side"
-                        initial={{ opacity: 0, x: -30 }}
-                        animate={inView ? { opacity: 1, x: 0 } : {}}
-                        transition={{ duration: 0.4, ease: "easeOut" }}
+                        initial={{ opacity: 0, x: -50 }}
+                        animate={headerInView ? { opacity: 1, x: 0 } : {}}
+                        transition={{ duration: 0.6, ease: "easeOut" }}
                     >
                         <div className="about__image-wrapper">
                             <div className="about__image-bg" />
@@ -62,9 +43,9 @@ const About = () => {
                             </div>
                             <motion.div
                                 className="about__experience-badge glass-card"
-                                initial={{ scale: 0 }}
-                                animate={inView ? { scale: 1 } : {}}
-                                transition={{ delay: 0.2, type: "spring", stiffness: 260, damping: 20 }}
+                                initial={{ scale: 0, opacity: 0 }}
+                                animate={headerInView ? { scale: 1, opacity: 1 } : {}}
+                                transition={{ delay: 0.3, type: "spring", stiffness: 200, damping: 15 }}
                             >
                                 <span className="about__experience-years text-gradient-gold">15+</span>
                                 <span className="about__experience-text">Years of<br />Excellence</span>
@@ -74,19 +55,21 @@ const About = () => {
 
                     <motion.div
                         className="about__content"
-                        initial={{ opacity: 0, x: 30 }}
-                        animate={inView ? { opacity: 1, x: 0 } : {}}
-                        transition={{ duration: 0.4, ease: "easeOut" }}
+                        initial={{ opacity: 0, x: 50 }}
+                        animate={headerInView ? { opacity: 1, x: 0 } : {}}
+                        transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
                     >
-                        <span className="section-badge">
-                            <Heart size={14} />
-                            About Us
-                        </span>
-                        <h2 className="section-title" style={{ textAlign: 'left' }}>
-                            Proudly Serving <span className="text-gradient-gold">Shashemene</span> Since 2009
-                        </h2>
+                        <div className="section-header">
+                            <span className="section-badge">
+                                <Heart size={14} />
+                                About Us
+                            </span>
+                            <h2 className="section-title">
+                                Proudly Serving <span className="text-gradient-gold">Shashemene</span> Since 2009
+                            </h2>
+                        </div>
                         <p className="about__text">
-                            Located in the heart of <strong>Kebele 04</strong>, Martha Dental Clinic has been a pillar of oral health
+                            Located in the heart of <strong>Abosto</strong>, Martha Dental Clinic has been a pillar of oral health
                             in our community for over 15 years. We combine Ethiopian hospitality with world-class dental technology
                             to ensure every patient leaves with a confident smile.
                         </p>
@@ -102,10 +85,10 @@ const About = () => {
                                     <motion.div
                                         key={i}
                                         className="about__why-item glass-card"
-                                        initial={{ opacity: 0, x: 20 }}
-                                        animate={inView ? { opacity: 1, x: 0 } : {}}
-                                        transition={{ delay: 0.1 + i * 0.04 }}
-                                        whileHover={{ x: 5, backgroundColor: "var(--primary-50)" }}
+                                        initial={{ opacity: 0, y: 10 }}
+                                        animate={headerInView ? { opacity: 1, y: 0 } : {}}
+                                        transition={{ delay: 0.3 + i * 0.05 }}
+                                        whileHover={{ x: 5, backgroundColor: "rgba(var(--primary-rgb), 0.1)" }}
                                     >
                                         <CheckCircle size={18} className="about__why-icon" />
                                         <span>{item}</span>
@@ -116,23 +99,29 @@ const About = () => {
                     </motion.div>
                 </div>
 
-                <div className="about__stats" ref={ref}>
+                <div className="about__stats" ref={statsRef}>
                     {stats.map((stat, i) => (
                         <motion.div
                             key={stat.label}
                             className="about__stat glass-card"
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={inView ? { opacity: 1, y: 0 } : {}}
-                            transition={{ delay: 0.2 + i * 0.04 }}
-                            whileHover={{ y: -5 }}
+                            initial={{ opacity: 0, y: 30 }}
+                            animate={statsInView ? { opacity: 1, y: 0 } : {}}
+                            transition={{ delay: i * 0.1, type: "spring", stiffness: 100 }}
+                            whileHover={{
+                                y: -8,
+                                boxShadow: "0 15px 30px rgba(0,0,0,0.1)",
+                                borderColor: "rgba(var(--primary-rgb), 0.3)"
+                            }}
                         >
-                            <div className="about__stat-icon">
-                                <stat.icon size={24} />
+                            <div className="about__stat-icon-wrapper">
+                                <stat.icon size={28} strokeWidth={1.5} />
                             </div>
-                            <div className="about__stat-number text-gradient">
-                                <Counter end={stat.value} suffix={stat.suffix} inView={inView} />
+                            <div className="about__stat-content">
+                                <div className="about__stat-number text-gradient-gold">
+                                    <Counter end={stat.value} suffix={stat.suffix} inView={statsInView} />
+                                </div>
+                                <div className="about__stat-label">{stat.label}</div>
                             </div>
-                            <div className="about__stat-label">{stat.label}</div>
                         </motion.div>
                     ))}
                 </div>

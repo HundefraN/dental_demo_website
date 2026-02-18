@@ -14,7 +14,7 @@ const ScrollReveal = ({ children, width = "100%", delay = 0 }) => {
                 }}
                 initial="hidden"
                 animate={isInView ? "visible" : "hidden"}
-                transition={{ duration: 0.8, delay, ease: [0.22, 1, 0.36, 1] }}
+                transition={{ duration: 0.5, delay, ease: [0.22, 1, 0.36, 1] }}
             >
                 {children}
             </motion.div>

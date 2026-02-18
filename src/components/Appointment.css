@@ -391,10 +391,29 @@
 
 @media (max-width: 480px) {
     .appointment__contact-box {
-        padding: 28px 20px;
+        padding: 20px 16px;
     }
 
     .appointment__phone-link {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
+    }
+
+    .appointment__form-wrapper {
+        padding: 20px 16px;
+    }
+
+    .appointment__card {
+        padding: 16px;
+    }
+
+    .appointment__field input,
+    .appointment__field select,
+    .appointment__field textarea {
+        padding: 12px 12px 12px 40px;
+        font-size: 0.9rem;
+    }
+
+    .appointment__row {
+        gap: 16px;
     }
 }

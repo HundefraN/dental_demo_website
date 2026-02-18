@@ -133,5 +133,26 @@
 @media (max-width: 480px) {
     .services__grid {
         grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .services__card {
+        padding: 24px 20px;
+    }
+
+    .services__icon {
+        width: 48px;
+        height: 48px;
+        margin-bottom: 16px;
+    }
+
+    .services__card-title {
+        font-size: 1.1rem;
+        margin-bottom: 8px;
+    }
+
+    .services__card-desc {
+        font-size: 0.9rem;
+        margin-bottom: 16px;
     }
 }

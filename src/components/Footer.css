@@ -297,7 +297,25 @@
 }
 
 @media (max-width: 480px) {
+    .footer {
+        padding: 40px 0 0;
+    }
+
     .footer__desc {
         max-width: 100%;
+        font-size: 0.9rem;
+    }
+
+    .footer__grid {
+        gap: 24px;
+        padding-bottom: 32px;
+    }
+
+    .footer__col-title {
+        margin-bottom: 16px;
+    }
+
+    .footer__bottom {
+        padding: 24px 0;
     }
 }

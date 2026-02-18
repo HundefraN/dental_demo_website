@@ -5,7 +5,7 @@ import { Star, ChevronLeft, ChevronRight, Quote, MessageSquare } from 'lucide-re
 import './Testimonials.css';
 
 const testimonials = [
-    { name: 'Tigist Alemu', treatment: 'Teeth Whitening', rating: 5, text: "I've never felt so confident about my smile! The team at Martha Dental Clinic in Kebele 04 is simply amazing. They made me feel at home.", avatar: 'TA' },
+    { name: 'Tigist Alemu', treatment: 'Teeth Whitening', rating: 5, text: "I've never felt so confident about my smile! The team at Martha Dental Clinic in Abosto is simply amazing. They made me feel at home.", avatar: 'TA' },
     { name: 'Dawit Kebede', treatment: 'Dental Implants', rating: 5, text: "Dr. Martha is a true professional. I was worried about getting implants, but the procedure was smooth and the results are natural. Highly recommended!", avatar: 'DK' },
     { name: 'Hanna Tadesse', treatment: 'Orthodontics', rating: 5, text: "My daughter loves coming here! The pediatric care is exceptional, and her braces progress has been wonderful. Thank you for such world-class care.", avatar: 'HT' },
     { name: 'Solomon Worku', treatment: 'Root Canal', rating: 5, text: "Pain-free and efficient. I came in with a severe toothache and left relieved. The clinic is modern, clean, and the staff treats you like family.", avatar: 'SW' },

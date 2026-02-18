@@ -153,6 +153,23 @@
     box-shadow: var(--shadow-md);
 }
 
+/* Dark Mode Overrides for Socials */
+[data-theme="dark"] .contact__socials span {
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .contact__social-links a {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--primary-light);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .contact__social-links a:hover {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
 /* Form */
 .contact__form-wrapper {
     background: rgba(255, 255, 255, 0.85);
@@ -255,6 +272,7 @@
 @media (max-width: 640px) {
     .contact__cards {
         grid-template-columns: 1fr;
+        gap: 16px;
     }
 
     .contact__form-row {
@@ -262,12 +280,21 @@
     }
 
     .contact__form-wrapper {
-        padding: 28px 20px;
+        padding: 24px 16px;
+    }
+
+    .contact__input {
+        padding: 14px 16px;
     }
 }
 
 @media (max-width: 480px) {
     .contact__card {
-        padding: 28px 20px;
+        padding: 20px 16px;
+    }
+
+    .contact__map-wrapper {
+        min-height: 300px;
+        padding: 12px;
     }
 }
