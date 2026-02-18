@@ -9,6 +9,12 @@ const Hero = () => {
     const springTransition = { type: "spring", stiffness: 50, damping: 20 };
     const floatTransition = { duration: 6, repeat: Infinity, ease: "easeInOut" };
 
+    const features = [
+        { icon: Shield, text: 'Sterile & Safe', color: 'from-blue-400 to-cyan-300' },
+        { icon: MapPin, text: 'Central Location', color: 'from-amber-400 to-orange-300' },
+        { icon: Award, text: 'Top Specialists', color: 'from-purple-400 to-pink-300' }
+    ];
+
     return (
         <section className="hero" id="home">
             <div className="hero__bg">
@@ -84,25 +90,40 @@ const Hero = () => {
                     </motion.div>
 
                     <motion.div
-                        className="hero__features"
+                        className="hero__features-container"
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ ...springTransition, delay: 0.8 }}
                     >
-                        {[
-                            { icon: Shield, text: 'Sterile & Safe' },
-                            { icon: MapPin, text: 'Central Location' },
-                            { icon: Award, text: 'Top Specialists' }
-                        ].map((feature, i) => (
-                            <motion.div
-                                key={i}
-                                className="hero__feature glass-panel"
-                                whileHover={{ y: -5, backgroundColor: "rgba(255,255,255,0.8)" }}
-                            >
-                                <feature.icon size={20} className="text-primary" />
-                                <span>{feature.text}</span>
-                            </motion.div>
-                        ))}
+                        {/* Desktop View */}
+                        <div className="hero__features desktop-only">
+                            {features.map((feature, i) => (
+                                <motion.div
+                                    key={i}
+                                    className="hero__feature glass-panel"
+                                    whileHover={{ y: -5, backgroundColor: "rgba(255,255,255,0.8)" }}
+                                >
+                                    <feature.icon size={20} className="text-primary" />
+                                    <span>{feature.text}</span>
+                                </motion.div>
+                            ))}
+                        </div>
+
+                        {/* Mobile Marquee View */}
+                        <div className="hero__marquee-wrapper mobile-only">
+                            <div className="hero__marquee-track">
+                                {/* Tripled for smooth loop */}
+                                {[...features, ...features, ...features, ...features].map((feature, i) => (
+                                    <div key={`mob-${i}`} className="hero__feature-card">
+                                        <div className={`hero__feature-icon-wrapper bg-gradient-to-br ${feature.color}`}>
+                                            <feature.icon size={22} className="text-white" />
+                                        </div>
+                                        <span className="hero__feature-text">{feature.text}</span>
+                                        <div className="hero__feature-shine" />
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
                     </motion.div>
                 </div>
 
@@ -137,10 +158,8 @@ const Hero = () => {
                         {/* Floating badge */}
                         <motion.div
                             className="hero__badge glass-card"
-                            initial={{ scale: 0, opacity: 0 }}
-                            animate={{ scale: 1, opacity: 1, y: [0, -10, 0] }}
+                            animate={{ y: [0, -10, 0] }}
                             transition={{
-                                scale: { delay: 1.2, type: 'spring' },
                                 y: floatTransition
                             }}
                         >

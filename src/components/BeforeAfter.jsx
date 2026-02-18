@@ -84,7 +84,7 @@ const ComparisonCard = ({ item }) => {
             ref={containerRef}
             style={{
                 '--pos': position,
-                touchAction: 'none' // Prevent scrolling while dragging on touch
+                touchAction: 'pan-y' // Allow vertical scrolling, preventing horizontal scroll while dragging
             }}
         >
             <div className="ba-card__viewer">
