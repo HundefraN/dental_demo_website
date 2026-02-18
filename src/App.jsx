@@ -31,7 +31,7 @@ function App() {
   return (
     <>
       <div className="noise-overlay" />
-      <BrowserRouter>
+      <BrowserRouter basename={import.meta.env.BASE_URL}>
         <Navbar />
         <main>
           <Suspense fallback={<PageLoader />}>

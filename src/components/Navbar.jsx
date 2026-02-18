@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Sun, Moon, Phone, MapPin } from 'lucide-react';
+import { Menu, X, Sun, Moon, Phone, MapPin, ChevronRight, Calendar } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 import './Navbar.css';
 
 import logo from '../assets/logo.png';
@@ -21,6 +22,15 @@ const Navbar = () => {
     document.documentElement.setAttribute('data-theme', darkMode ? 'dark' : 'light');
   }, [darkMode]);
 
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => { document.body.style.overflow = 'unset'; };
+  }, [isOpen]);
+
   useEffect(() => { setIsOpen(false); }, [location]);
 
   const navLinks = [
@@ -29,6 +39,32 @@ const Navbar = () => {
     { to: '/about', label: 'About Us' },
     { to: '/contact', label: 'Contact' },
   ];
+
+  const menuVariants = {
+    closed: {
+      x: "100%",
+      transition: {
+        type: "spring",
+        stiffness: 400,
+        damping: 40
+      }
+    },
+    open: {
+      x: "0%",
+      transition: {
+        type: "spring",
+        stiffness: 400,
+        damping: 40,
+        staggerChildren: 0.1,
+        delayChildren: 0.2
+      }
+    }
+  };
+
+  const itemVariants = {
+    closed: { x: 20, opacity: 0 },
+    open: { x: 0, opacity: 1 }
+  };
 
   return (
     <nav className={`navbar ${scrolled ? 'navbar--scrolled' : ''}`}>
@@ -43,7 +79,8 @@ const Navbar = () => {
           </div>
         </Link>
 
-        <div className={`navbar__links ${isOpen ? 'navbar__links--open' : ''}`}>
+        {/* Desktop Links */}
+        <div className="navbar__links desktop-only">
           {navLinks.map(link => (
             <Link
               key={link.to}
@@ -53,9 +90,6 @@ const Navbar = () => {
               {link.label}
             </Link>
           ))}
-          <Link to="/appointment" className="btn btn-primary btn-sm navbar__cta-mobile">
-            Book Appointment
-          </Link>
         </div>
 
         <div className="navbar__actions">
@@ -76,11 +110,75 @@ const Navbar = () => {
           <Link to="/appointment" className="btn btn-primary btn-sm navbar__cta">
             Book Appointment
           </Link>
-          <button className="navbar__hamburger" onClick={() => setIsOpen(!isOpen)} aria-label="Toggle menu">
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
+          <button className="navbar__hamburger" onClick={() => setIsOpen(true)} aria-label="Open menu">
+            <Menu size={24} />
           </button>
         </div>
       </div>
+
+      {/* Mobile Menu Overlay */}
+      <AnimatePresence>
+        {isOpen && (
+          <>
+            <motion.div
+              className="mobile-menu__backdrop"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsOpen(false)}
+            />
+            <motion.div
+              className="mobile-menu"
+              variants={menuVariants}
+              initial="closed"
+              animate="open"
+              exit="closed"
+            >
+              <div className="mobile-menu__header">
+                <span className="mobile-menu__title">Menu</span>
+                <button className="mobile-menu__close" onClick={() => setIsOpen(false)}>
+                  <X size={24} />
+                </button>
+              </div>
+
+              <div className="mobile-menu__content">
+                <div className="mobile-menu__links">
+                  {navLinks.map(link => (
+                    <motion.div key={link.to} variants={itemVariants}>
+                      <Link
+                        to={link.to}
+                        className={`mobile-menu__link ${location.pathname === link.to ? 'mobile-menu__link--active' : ''}`}
+                        onClick={() => setIsOpen(false)}
+                      >
+                        {link.label}
+                        <ChevronRight size={16} className="mobile-menu__arrow" />
+                      </Link>
+                    </motion.div>
+                  ))}
+                </div>
+
+                <motion.div variants={itemVariants} className="mobile-menu__footer">
+                  <Link to="/appointment" onClick={() => setIsOpen(false)} className="btn btn-primary btn-lg mobile-menu__cta">
+                    <Calendar size={18} />
+                    Book Appointment
+                  </Link>
+                  
+                  <div className="mobile-menu__info">
+                    <div className="mobile-menu__info-item">
+                        <MapPin size={16} className="text-primary" />
+                        <span>Shashemene, Abosto</span>
+                    </div>
+                    <a href="tel:+251911338056" className="mobile-menu__info-item">
+                        <Phone size={16} className="text-primary" />
+                        <span>+251 911 234 567</span>
+                    </a>
+                  </div>
+                </motion.div>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
     </nav>
   );
 };
